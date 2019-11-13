@@ -41,10 +41,17 @@ denominations = [1,3,4]
 
 Like that, but fully filled out... Take the left-most bottom child, get the depth, and then save the location of that child as the *current* minimal answer. Then iterate right and do the same thing, only replacing the *current* minimal answer if it has a lower depth in the tree. I will be writing a function which does exactly this in this exercise.
 
-Before getting to it I did find a different solution that seems a little easier to implement, and gets rid of some duplicated calculations. However I never could have come up with it on my own. It takes the principles of dynamic programming and uses a bottom-up iterative approach. It is described in [this video](https://www.youtube.com/watch?v=jgiZlGzXMBw) from 7:43 onward, and I will write a separate function that solves the problem using this method. Look at the one dimensional list he illustrates while iterating through and finding the minimal amount of coins. Instead of storing just the *minimal amount* of coins in the indexes of the list, I will store a nested list of the specific coins which make up that minimal amount. The logic behind the solution, however, will be basically the same.
+Before getting to it I found a different solution that seems a little easier to implement, and gets rid of some duplicated calculations. However I never could have come up with it on my own. It takes the principles of dynamic programming and uses a bottom-up iterative approach. It is described in [this video](https://www.youtube.com/watch?v=jgiZlGzXMBw) from 7:43 onward, and I will write a separate function that solves the problem using this method. Look at the one dimensional list he illustrates while iterating through and finding the minimal amount of coins. Instead of storing just the *minimal amount* of coins in the indexes of the list, I will store a nested list of the specific coins which make up that minimal amount. The logic behind the solution, however, will be basically the same.
 
 If you are trying to understand this problem, I highly suggest you read and watch the links I have provided. They were very helpful for me.
 
 ### Usage
 
-TBA
+You can run change.py directly with the python3 interpreter.
+
+Ex: python change.py amountInteger denomList [topDown|bottomUp]<br/>
+*amountInteger*: Amount to make in change as an int, like 6<br/>
+*denomList*: Denominations as a list, like [1,3,4]<br/>
+*topDown|bottomUp*: Mutually exclusive arg to determine algorithm used. Optional. Default to bottomUp.
+
+You can also execute change-test.py with no arguments to try the script against known inputs and answers.
