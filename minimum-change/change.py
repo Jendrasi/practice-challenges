@@ -1,5 +1,6 @@
 import sys
 import ast
+import time
 
 def __topDown(amt, denom):
     return 0
@@ -71,10 +72,19 @@ if __name__ == "__main__":
     print("Denominations are:")
     print(*d,sep=', ')
     
+    # Execution Time
+    # startT = time.time_ns()
+
     # Execute
     # solution = minimumChange(6,[4,3,1],0)
     solution = minimumChange(a,d,strategy)
 
+    # Execution Time (cont.)
+    # endT = time.time_ns()
+
     # Final Solution
     print(solution)
     # printSolution(solution)
+
+    # Execution Time (fin.)
+    # print("Algorithm Execution Time: %s milliseconds" % ((endT-startT)/1000000))
