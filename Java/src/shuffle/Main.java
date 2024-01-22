@@ -1,5 +1,7 @@
 package shuffle;
 
+import java.util.Arrays;
+
 public class Main {
 
 	public static int[] shuffleFisherYates(int[] list) {
@@ -14,9 +16,25 @@ public class Main {
 		return result;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	private static void reassign(int[] list) {
+		list = new int[2];
+		list[0] = 3;
+		list[1] = 4;
+	}
 
+	private static void modify(int[] list) {
+		list[1] = 3;
+	}
+
+	public static void main(String[] args) {
+		int[] list = new int[2];
+		list[0] = 1;
+		list[1] = 2;
+		System.out.println(Arrays.toString(list));
+		reassign(list);
+		System.out.println(Arrays.toString(list));
+		modify(list);
+		System.out.println(Arrays.toString(list));
 	}
 
 }
