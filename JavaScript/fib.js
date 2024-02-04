@@ -9,7 +9,7 @@ Like recursive fib or iterative fib. A help command would also be neat.
 */
 
 const { stdout } = require('node:process');
-const badInputError = (funcName) => { return new Error(funcName.concat(" expects a number greater than 0 as an argument."))};
+const badInputError = (funcName) => { return new Error(`${funcName} expects a number greater than 0 as an argument.`)};
 
 /*
 Print 'i' digits of fibonnaci sequence using iterative method. If i is not populated, return error.
@@ -19,13 +19,13 @@ function fibIterative(i) {
         throw badInputError(getFunctionName());
     }
     console.log(`Printing ${i} numbers of a Fibonacci sequence (iteratively)...`);
-    let fib = 1;
-    let fibPrev = 0;
+    let fib = 0;
+    let nextFib = 1;
     for (let iter = 1; iter <= i; iter++) {
         stdout.write(`${fib} `);
-        let newFib = fib + fibPrev;
-        fibPrev = fib;
-        fib = newFib;
+        let newFib = fib + nextFib;
+        fib = nextFib;
+        nextFib = newFib;
     }
     stdout.write(`\n...Done\n`);
 }
@@ -42,12 +42,15 @@ function fibRecursive(i) {
     }
     console.log(`Printing ${i} numbers of a Fibonacci sequence (recursively)...`);
 
-    let fibCache = [1, 1];
+    let fibCache = [0];
     const getFib = (x) => {
-        if (fibCache.length >= x) {
-            return fibCache[x-1];
+        if (x == 2 && fibCache.length == 1) {
+            fibCache.push(1);
+            return 1;
+        } else if (fibCache.length >= x) {
+            return fibCache[x - 1];
         } else {
-            let nFib = getFib(x-1) + getFib(x-2);
+            let nFib = getFib(x - 1) + getFib(x - 2);
             fibCache.push(nFib);
             return nFib;
         }
