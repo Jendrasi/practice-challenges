@@ -9,13 +9,14 @@ Like recursive fib or iterative fib. A help command would also be neat.
 */
 
 const { stdout } = require('node:process');
+const badInputError = (funcName) => { return new Error(funcName.concat(" expects a number greater than 0 as an argument."))};
 
 /*
 Print 'i' digits of fibonnaci sequence using iterative method. If i is not populated, return error.
 */
-function fibIter(i) {
+function fibIterative(i) {
     if (i === undefined || i < 1) {
-        throw new Error(`${getFunctionName()} expects a number greater than 0 as an argument.`);
+        throw badInputError(getFunctionName());
     }
     console.log(`Printing ${i} numbers of a Fibonacci sequence (iteratively)...`);
     let fib = 1;
@@ -31,9 +32,33 @@ function fibIter(i) {
 
 /*
 Print 'i' digits of fibonnaci sequence using recursive method. If i is not populated, return error.
+The rules I set for myself was to see if I could print the whole sequence, not just the n-th, WITHOUT looping.
+I came across a solution while trying to resolve the efficiency issue.
+The fibCache that resolves that issue happens to have the ordered list of fibs after the n-th is generated.
 */
 function fibRecursive(i) {
+    if (i === undefined || i < 1) {
+        throw badInputError(getFunctionName());
+    }
+    console.log(`Printing ${i} numbers of a Fibonacci sequence (recursively)...`);
 
+    let fibCache = [1, 1];
+    const getFib = (x) => {
+        if (fibCache.length >= x) {
+            return fibCache[x-1];
+        } else {
+            let nFib = getFib(x-1) + getFib(x-2);
+            fibCache.push(nFib);
+            return nFib;
+        }
+    };
+
+    // This will return the n-th fib on it's own...but with the fibCache which makes the algo more efficient...
+    getFib(i);
+    // You also have a record of every fib up to it!
+    console.log(fibCache.join(" "));
+    
+    stdout.write(`...Done\n`);
 }
 
 /*
@@ -43,4 +68,5 @@ function getFunctionName() {
     return getFunctionName.caller.name;
 }
 
-fibIter(30);
+fibIterative(30);
+fibRecursive(30);
