@@ -6,6 +6,7 @@ Fibonnaci sequences
 Temporary Note: For now, just treat the whole file as a main function and play around.
 But I installed minimist to play with cmd args to run different functions.
 Like recursive fib or iterative fib. A help command would also be neat.
+Also, learn how to unit test in JS and write a couple for this class.
 */
 
 const { stdout } = require('node:process');
