@@ -1,1 +1,1 @@
-This directory is for practice questions that I'm doing on testdome.com
+This Java project is for practice questions that I'm doing on testdome.com
