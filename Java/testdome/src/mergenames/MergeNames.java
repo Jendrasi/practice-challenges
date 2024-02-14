@@ -7,15 +7,12 @@ public class MergeNames {
     
     public static String[] uniqueNames(String[] names1, String[] names2) {
         Set<String> uniqueNames = new HashSet<String>();
-        int i = 0;
-        while (i < names1.length) {
+        int i;
+        for (i = 0; i < names1.length; i++) {
             uniqueNames.add(names1[i]);
-            i++;
         }
-        i = 0;
-        while (i < names2.length) {
+        for (i = 0; i < names2.length; i++) {
             uniqueNames.add(names2[i]);
-            i++;
         }
         return uniqueNames.stream().toArray(String[]::new);
     }
