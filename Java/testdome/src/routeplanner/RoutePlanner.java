@@ -4,20 +4,9 @@ import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 
-public class RoutePlanner {
+/* This answer got all the right answers but I lost 25% because it wasn't performant on a large map. */
 
-    /* This answer got all the right answers but I lost 25% because it wasn't performant on a large map.
-     * I actually don't know for sure that it worked correctly on the large map, it just says it exceeded the time limit for that
-     * test case, which functions explicitly as a performance test. So I assume the possible edge cases to test a 'correct'
-     * algorithm were covered by the smaller map tests.
-     * 
-     * I'd like to start improving this by making it more object oriented.
-     * I'd like to make a nested class describing a RasterizedMap
-     * and another describing a Coordinate that the map is made up of.
-     * A rasterizedMap should have a getter for x,y range and getter for Coordinate at x,y location.
-     * Each Coordinate should have x,y position and flag for whether they've been traversed,
-     * getter/setters for all these values. Should also override .equals to check equality.
-     */
+public class RoutePlanner {
 
     public static boolean routeExists(int fromRow, int fromColumn, int toRow, int toColumn, boolean[][] mapMatrix) {
         if (mapMatrix[fromRow][fromColumn] == false || mapMatrix[toRow][toColumn] == false) return false;
