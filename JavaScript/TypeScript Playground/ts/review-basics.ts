@@ -30,7 +30,6 @@ console.log(ramen);
 
 // Initializing with type
 let exists: boolean; // Now it's undefined
-console.log(exists);
 exists = true;
 console.log(exists);
 
@@ -51,11 +50,22 @@ _id = '9gr8s0';
 let anyObject: object;
 anyObject = {name: 'Matt', age: 29};
 anyObject = ['Matt']; // An array is still an object
+console.log(anyObject);
 let personObject: {
     name: string,
     age: number
-} // Can pre-specify the object schema
+} // Can pre-specify the object schema. Here it's undefined
 personObject = {
     name: 'Abhinav',
     age: 35
 };
+console.log(personObject);
+
+let userInputAny: any = 4; // You can allow a variable to be any type.
+userInputAny = 'hello';
+userInputAny = true; // Though this kind of ignores the benefits of TS.
+let anyArray: any[] = []; // You could do the same with arrays.
+anyArray.push(1);
+anyArray.push('one');
+anyArray.push(true);
+console.log(anyArray);
