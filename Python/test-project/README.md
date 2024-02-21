@@ -1,0 +1,1 @@
+It's been a while since I wrote Python so this is just a compilation of miniature exercises refreshing on the language.
