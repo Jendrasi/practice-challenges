@@ -69,3 +69,42 @@ anyArray.push(1);
 anyArray.push('one');
 anyArray.push(true);
 console.log(anyArray);
+
+// Functions
+let speakTheirLanguage: Function;
+
+speakTheirLanguage = () => {
+    console.log('felicitations, malefactors!');
+}
+
+const power = (x: number, p: number = 2, comment?: string): number => {
+    //Could infer the return type there at the end of above line.
+    //Not super necessary but can make things more readable.
+    if (comment != undefined) {
+        console.log(comment);
+    }
+    return x**p;
+}
+console.log(power(2));
+console.log(power(2,3));
+console.log(power(2,4,"powering up!"));
+/* There doesn't seem to be a way to explicitly use one latter optional
+parameter without using the previous. In this case you would probably want
+to use an options object (options = {}) or maybe a 'rest parameter' (arg1, ...options)
+which will make a list called options available in the function block. */
+
+// Type Aliases
+
+type strnum = string | number;
+const printAThing = (thing: strnum) => {
+    console.log(thing);
+}
+type user = {name: string, email: string, uid: strnum}
+
+// Function signatures (kind of like an interface)
+
+let hypotenuse: (a: number, b: number) => number; // can't be a const since the signature isn't initialized
+hypotenuse = (a: number, bnum: number) => { //changed one of the arg names to show it is allowed
+    return Math.sqrt(a**2 + bnum**2);
+}
+console.log(hypotenuse(1, 1));
